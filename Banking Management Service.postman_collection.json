@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "e35d750e-b551-4c6a-b310-9dbb0063b22d",
+		"name": "Banking Management Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "35142354"
+	},
+	"item": [
+		{
+			"name": "Customer Management Service",
+			"item": [
+				{
+					"name": "Get Single Customer Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/customers/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/customers"
+					},
+					"response": []
+				},
+				{
+					"name": "Add customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Kamal\",\r\n    \"lastName\": \"Kumar\",\r\n    \"email\": \"kamal.kumar@mail.com\",\r\n    \"phoneNumber\": \"843911241\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/customers"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer Details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"id\": 1,\r\n            \"firstName\": \"Kaushal\",\r\n            \"lastName\": \"Yadav\",\r\n            \"email\": \"kaushal.yadav@mail.com\",\r\n            \"phoneNumber\": \"9892041881\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/customers/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/customers/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Get all Accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/accounts"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/accounts/info/ACCKY889"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Money to account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"ACCKY889\",\r\n    \"customerId\": \"CUST1\",\r\n    \"amount\": 5000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/accounts/deposit"
+					},
+					"response": []
+				},
+				{
+					"name": "Withdraw money from account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"ACCKY889\",\r\n    \"customerId\": \"CUST1\",\r\n    \"amount\": 5000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/accounts/withdraw"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account.",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/accounts/delete/ACCKY889"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

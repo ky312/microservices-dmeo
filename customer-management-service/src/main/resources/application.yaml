@@ -1,0 +1,64 @@
+
+server:
+  port: 9001
+
+spring:
+  application:
+    name: CUSTOMER-SERVICE
+#  config:
+#    import: "optional:configserver:"
+#  cloud:
+#    config:
+#      uri: http://localhost:8888/
+#      name: CUSTOMER-SERVICE
+  datasource:
+    url: jdbc:mysql://localhost:3306/banking_management
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      accountServiceBreaker:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 6s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+
+#eureka:
+#  instance:
+#    hostname: localhost
+#    prefer-ip-address: true
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
